@@ -37,7 +37,7 @@ int main() {
 		std::cout << "close::code=["<<code<<"] message=["<< message << "]"<<std::endl;
 	};
 
-	app.ws<PerSocketData>("/*", (uWS::Behavior&&)behavior).listen(9001, [](auto *token) {
+	app.ws<PerSocketData>("/*", std::move(behavior)).listen(9001, [](auto *token) {
 			if (token) {
 				std::cout << "Listening on port " << 9001 << std::endl;
 			}
